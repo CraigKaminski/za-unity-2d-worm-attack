@@ -17,7 +17,7 @@ public class GameController : MonoBehaviour {
                 if (Random.value < boxChance)
                 {
                     GameObject boxInstance = Instantiate(boxPrefab);
-                    boxInstance.transform.SetParent(transform.parent);
+                    boxInstance.transform.SetParent(transform);
                     boxInstance.transform.position = new Vector2(
                         (x - tileSize / 2) / 100f,
                         (y - tileSize / 2) / 100f
