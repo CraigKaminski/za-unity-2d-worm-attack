@@ -430,6 +430,7 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 1944273354}
+  - component: {fileID: 1944273355}
   m_Layer: 0
   m_Name: GameController
   m_TagString: Untagged
@@ -452,3 +453,17 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1944273355
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1944273353}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 54883039be75b4f4ca7e0f9fc1b3c32f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  boxPrefab: {fileID: 1473722929650276, guid: aab96eb6e9828e940a34760c5ffa41d7, type: 2}
+  tileSize: 32
+  boxChance: 0.1
