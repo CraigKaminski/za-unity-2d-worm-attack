@@ -603,6 +603,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 54883039be75b4f4ca7e0f9fc1b3c32f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  player: {fileID: 833315455}
   boxPrefab: {fileID: 1473722929650276, guid: aab96eb6e9828e940a34760c5ffa41d7, type: 2}
   tileSize: 32
   boxChance: 0.1
+  monsterPrefab: {fileID: 1293322621113254, guid: 7c97e2d1252e2804a872b38ecb15830d,
+    type: 2}

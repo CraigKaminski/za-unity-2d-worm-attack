@@ -6,6 +6,7 @@ TagManager:
   tags:
   - Box
   - Bullet
+  - Monster
   layers:
   - Default
   - TransparentFX

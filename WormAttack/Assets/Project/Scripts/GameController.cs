@@ -1,12 +1,15 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class GameController : MonoBehaviour {
 
+    public Player player;
     public GameObject boxPrefab;
     public int tileSize = 32;
     public float boxChance = 0.1f;
+    public GameObject monsterPrefab;
 
 	// Use this for initialization
 	void Start () {
@@ -25,10 +28,17 @@ public class GameController : MonoBehaviour {
                 }
             }
         }
+
+        GameObject monsterInstance = Instantiate(monsterPrefab);
+        monsterInstance.transform.SetParent(transform);
+        monsterInstance.transform.position = new Vector2(0, (Screen.height / 2 - tileSize / 2) / 100f);
 	}
 	
 	// Update is called once per frame
 	void Update () {
-		
+        if (player == null)
+        {
+            SceneManager.LoadScene("Game");
+        }
 	}
 }
