@@ -19,20 +19,28 @@ public class Monster : MonoBehaviour {
 	void Update () {
 		if (movingDirection > 0 && transform.position.x > horizntalLimit)
         {
-            movingDirection *= -1;
-            transform.position = new Vector2(
-                transform.position.x,
-                transform.position.y - tileSize / 100f
-            );
-            GetComponent<Rigidbody2D>().velocity = new Vector2(speed * movingDirection, 0);
+            MoveDown();
         } else if (movingDirection < 0 && transform.position.x < -horizntalLimit)
         {
-            movingDirection *= -1;
-            transform.position = new Vector2(
+            MoveDown();
+        }
+    }
+
+    void OnTriggerEnter2D(Collider2D otherCollider)
+    {
+        if (otherCollider.tag == "Box")
+        {
+            MoveDown();
+        }
+    }
+
+    void MoveDown()
+    {
+        movingDirection *= -1;
+        transform.position = new Vector2(
                 transform.position.x,
                 transform.position.y - tileSize / 100f
             );
-            GetComponent<Rigidbody2D>().velocity = new Vector2(speed * movingDirection, 0);
-        }
+        GetComponent<Rigidbody2D>().velocity = new Vector2(speed * movingDirection, 0);
     }
 }
