@@ -7,6 +7,7 @@ public class Monster : MonoBehaviour {
     public float speed = 2f;
     public float horizntalLimit = 2.8f;
     public int tileSize = 32;
+    public Monster next;
 
     private float movingDirection = 1f;
 
