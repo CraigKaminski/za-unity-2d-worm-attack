@@ -13,6 +13,7 @@ public class GameController : MonoBehaviour {
     public int monsterSize = 5;
 
     private List<Monster> monsters;
+    private bool killedMonster;
 
 	// Use this for initialization
 	void Start () {
@@ -44,15 +45,18 @@ public class GameController : MonoBehaviour {
                 (Screen.height / 2 - tileSize / 2) / 100f
             );
 
+            Monster monster = monsterInstance.GetComponent<Monster>();
+            monster.OnKill += OnMonsterKill;
+
             if (previousMonster != null)
             {
-                previousMonster.next = monsterInstance.GetComponent<Monster>();
+                previousMonster.next = monster;
             } else
             {
-                monsters.Add(monsterInstance.GetComponent<Monster>());
+                monsters.Add(monster);
             }
 
-            previousMonster = monsterInstance.GetComponent<Monster>();
+            previousMonster = monster;
         }
 	}
 	
@@ -62,5 +66,51 @@ public class GameController : MonoBehaviour {
         {
             SceneManager.LoadScene("Game");
         }
+
+        if (monsters.Count == 0)
+        {
+            SceneManager.LoadScene("Game");
+        }
+
+        killedMonster = false;
 	}
+
+    void OnMonsterKill(Monster monster)
+    {
+        if (killedMonster == true)
+        {
+            return;
+        }
+
+        killedMonster = true;
+
+        Monster currentMonster = monster;
+        if (monster.next != null)
+        {
+            List<Monster> monsterString = new List<Monster>();
+            while (currentMonster.next != null)
+            {
+                monsterString.Add(currentMonster);
+                currentMonster.ChangeDirection();
+                currentMonster = currentMonster.next;
+            }
+            monsterString.Add(currentMonster);
+
+            for (int i = monsterString.Count - 1; i > 0; i--)
+            {
+                monsterString[i].next = monsterString[i - 1];
+            }
+            monsterString[0].next = null;
+
+            currentMonster.ChangeDirection();
+            monsters.Add(currentMonster);
+        }
+
+        if (monsters.IndexOf(monster) != -1)
+        {
+            monsters.Remove(monster);
+        }
+
+        Destroy(monster.gameObject);
+    }
 }

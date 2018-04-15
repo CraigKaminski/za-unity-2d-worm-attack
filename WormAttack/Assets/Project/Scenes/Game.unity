@@ -606,6 +606,7 @@ MonoBehaviour:
   player: {fileID: 833315455}
   boxPrefab: {fileID: 1473722929650276, guid: aab96eb6e9828e940a34760c5ffa41d7, type: 2}
   tileSize: 32
-  boxChance: 0.1
+  boxChance: 0.05
   monsterPrefab: {fileID: 1293322621113254, guid: 7c97e2d1252e2804a872b38ecb15830d,
     type: 2}
+  monsterSize: 5
